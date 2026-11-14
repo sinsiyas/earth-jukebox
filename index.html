@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Earth Information Jukebox: explore Earth science through visualization and sound.">
+  <title>Earth Information Jukebox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home"><span class="brand-icon">◎</span> EARTH <b>JUKEBOX</b></a>
+    <nav aria-label="Main navigation">
+      <a href="#explore">Explore</a>
+      <a href="#listen">Listen</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">NASA SPACE APPS CHALLENGE · CONCEPT PROTOTYPE</p>
+        <h1>Listen to our<br><span>changing planet.</span></h1>
+        <p class="hero-text">Turn Earth science data into an audio experience. Explore a data pattern, press play, and hear how the values change.</p>
+        <a class="primary-link" href="#explore">Explore Earth data <span>↗</span></a>
+      </div>
+
+      <div class="earth-art" role="img" aria-label="Illustration of planet Earth surrounded by sound waves">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="planet">
+          <div class="land land-one"></div>
+          <div class="land land-two"></div>
+          <div class="land land-three"></div>
+        </div>
+        <div class="sound-ring ring-one"></div>
+        <div class="sound-ring ring-two"></div>
+        <span class="star star-one">✦</span>
+        <span class="star star-two">✧</span>
+        <span class="star star-three">·</span>
+      </div>
+    </section>
+
+    <section class="section" id="explore">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">CHOOSE A DATA STORY</p>
+          <h2>Explore Earth</h2>
+        </div>
+        <span class="demo-tag">DATA EXPLORATION</span>
+      </div>
+
+      <div class="topic-grid">
+        <button class="topic-card active" data-topic="temperature">
+          <span class="topic-symbol">🌡</span>
+          <span class="topic-name">Temperature</span>
+          <span class="topic-desc">Global temperature data</span>
+          <span class="topic-action">Explore data ↗</span>
+        </button>
+
+        <button class="topic-card" data-topic="ocean">
+          <span class="topic-symbol">〰</span>
+          <span class="topic-name">Ocean</span>
+          <span class="topic-desc">Ocean temperature data</span>
+          <span class="topic-action">Explore data ↗</span>
+        </button>
+
+        <button class="topic-card" data-topic="forest">
+          <span class="topic-symbol">♧</span>
+          <span class="topic-name">Forest</span>
+          <span class="topic-desc">Global forest area data</span>
+          <span class="topic-action">Explore data ↗</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section player-section" id="listen">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">DATA SONIFICATION STUDIO</p>
+          <h2 id="story-title">Temperature soundscape</h2>
+        </div>
+        <span class="live-indicator"><i></i> INTERACTIVE DEMO</span>
+      </div>
+
+      <div class="studio">
+        <div class="visual-panel">
+          <div class="panel-top">
+            <span id="visual-label">TEMPERATURE DATA</span>
+            <span id="current-year">2020</span>
+          </div>
+
+          <div class="chart-wrap">
+            <canvas id="data-chart" aria-label="Chart of the selected data series"></canvas>
+          </div>
+
+          <div class="timeline-row">
+            <label for="timeline">Explore the timeline</label>
+            <output id="timeline-output">2020</output>
+          </div>
+
+          <input id="timeline" type="range" min="0" max="5" value="0" step="1">
+
+          <p class="chart-note" id="chart-note">
+            Explore Earth data through visualization and sound.
+          </p>
+        </div>
+
+        <div class="audio-panel">
+          <div class="audio-icon">♫</div>
+          <p class="eyebrow">LISTEN TO THE DATA</p>
+          <h3>Data becomes sound</h3>
+
+          <p class="audio-description" id="audio-description">
+            A higher data value is mapped to a higher tone. This is an audio representation of Earth data.
+          </p>
+
+          <!-- Voice Description Button -->
+          <button
+            id="voice-button"
+            class="play-button"
+            type="button"
+            aria-label="Read the current data description aloud">
+            🔊 Read Description
+          </button>
+
+          <div class="waveform" id="waveform" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span>
+          </div>
+
+          <div class="audio-controls">
+            <button id="play-button" class="play-button">▶ Play series</button>
+            <button id="stop-button" class="stop-button">■ Stop</button>
+          </div>
+
+          <div class="volume-row">
+            <label for="volume">Volume</label>
+            <input id="volume" type="range" min="0" max="0.3" value="0.12" step="0.01">
+          </div>
+
+          <p class="status" id="status" role="status" aria-live="polite">
+            Ready. Select a topic and press Play series.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section mapping-section">
+      <p class="eyebrow">TRANSPARENT SOUND DESIGN</p>
+      <h2>How data becomes sound</h2>
+
+      <div class="mapping-grid">
+        <div>
+          <b>Data value</b>
+          <p>Numerical value from the selected data series.</p>
+        </div>
+
+        <div>
+          <b>Pitch</b>
+          <p>Higher normalized value → higher tone frequency.</p>
+        </div>
+
+        <div>
+          <b>Time</b>
+          <p>Each data point plays in chronological order.</p>
+        </div>
+
+        <div>
+          <b>Volume</b>
+          <p>Audio volume is controlled through the volume slider.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <p class="eyebrow">WHY THIS MATTERS</p>
+      <h2>Earth science for more people.</h2>
+      <p>
+        This project demonstrates how Earth science data can be explored
+        through visualization and sound. It aims to make data patterns
+        more accessible, including for people with visual impairments.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <span>EARTH JUKEBOX</span>
+    <span>Student concept prototype · Not an official NASA product</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
